@@ -48,15 +48,8 @@ This is an experimental tool to help determine the total resources required to r
 
 st.divider()
 
-
-col1, col2 = st.columns(2, gap="large")
-
-with col1:
-   num_gb = st.slider("Total Unindexed Disk Size GB", 0.1, 1000.0, step=0.1, format="%f GB")
-
-with col2:
-   shard_max_gb = st.slider("Shard Max GB (default setting is 0.1 GB)", 0.1, 1.0, step=0.1, format="%f GB")
-
+num_gb = st.slider("Total Unindexed Disk Size GB", 0.1, 1000.0, step=0.1, format="%f GB")
+shard_max_gb = st.slider("Shard Max GB (default setting is 0.1 GB)", 0.1, 1.0, step=0.1, format="%f GB")
 
 data = p.calculate_required_specs(num_gb*1e9, shard_max_size_bytes=shard_max_gb*1e9)
 required_memory_gb = data['required_memory_gb']
